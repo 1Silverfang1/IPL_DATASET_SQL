@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.LinkedHashMap;
 
-import static com.company.Constant.ConstantValues.*;
-import static com.company.Constant.ConstantValues.preparedStatement;
+import static com.company.ConstantAndDatabaseConfig.DatabaseConfig.*;
+
 
 public class Service {
 

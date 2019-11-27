@@ -3,7 +3,7 @@ import com.company.Service.Service;
 
 import java.sql.SQLException;
 
-import static com.company.Constant.ConstantValues.*;
+import static com.company.ConstantAndDatabaseConfig.ConstantValues.*;
 
 public class DatasetSQL {
 

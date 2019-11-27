@@ -1,15 +1,7 @@
-package com.company.Constant;
-
-import java.sql.*;
+package com.company.ConstantAndDatabaseConfig;
 
 public class ConstantValues {
-    public static String jdbcUrlforDatabase = "jdbc:postgresql://localhost:5434/Database_test";
-    public   static String username = "postgres";
-    public static String password = "toor";
-    public  static Connection getConnection = null;
-    public static Statement getStatement = null;
-    public  static ResultSet getResultSet = null;
-    public static PreparedStatement preparedStatement;
+
     public static String YEAR ="2016",PRE_YEAR="2015";
     public  static String over ="6",limit="10";
     public static  String SEASON_COLUMN="season",WINNER_COLUMN="winner",BOWLING_TEAM="bowling_team",BOWLER="bowler",MATCH_PLAYED="match_played"
