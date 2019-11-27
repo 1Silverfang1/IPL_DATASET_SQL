@@ -1,14 +1,14 @@
-package com.company;
+package com.company.Service;
 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.LinkedHashMap;
 
-import static com.company.ConstantValues.*;
-import static com.company.ConstantValues.preparedStatement;
+import static com.company.Constant.ConstantValues.*;
+import static com.company.Constant.ConstantValues.preparedStatement;
 
-class Service {
+public class Service {
 
 
     private PreparedStatement establishConnection(String query) throws SQLException
@@ -42,12 +42,12 @@ class Service {
 
         return solvedQuery;
     }
-    LinkedHashMap<String,String> querySolver(String query, String columnFirst, String columnSecond) throws SQLException {
+    public LinkedHashMap<String,String> querySolver(String query, String columnFirst, String columnSecond) throws SQLException {
         getResultSet= establishConnection(query).executeQuery();
         Service service= new Service();
         return service.mapAdder(columnFirst,columnSecond);
     }
-    LinkedHashMap<String,String> querySolver(String query, String columnFirst, String columnSecond, String year) throws SQLException {
+    public LinkedHashMap<String,String> querySolver(String query, String columnFirst, String columnSecond, String year) throws SQLException {
         preparedStatement= establishConnection(query);
         preparedStatement.setString(1,year);
         getResultSet= preparedStatement.executeQuery();
