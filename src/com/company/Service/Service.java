@@ -17,11 +17,11 @@ public class Service {
         return getConnection.prepareStatement(query);
     }
 
-    private LinkedHashMap<String, String> mapAdder(String columnFirst, String columnSecond) throws SQLException {
+    private LinkedHashMap<String, String> mapAdder() throws SQLException {
         LinkedHashMap<String, String> solvedQuery = new LinkedHashMap<>();
         while (getResultSet.next()) {
-            String firstColumn = getResultSet.getString(columnFirst);
-            String secondColumn = getResultSet.getString(columnSecond);
+            String firstColumn = getResultSet.getString(1);
+            String secondColumn = getResultSet.getString(2);
             solvedQuery.put(firstColumn, secondColumn);
         }
         try {
@@ -41,17 +41,17 @@ public class Service {
         return solvedQuery;
     }
 
-    public LinkedHashMap<String, String> querySolver(String query, String columnFirst, String columnSecond) throws SQLException {
+    public LinkedHashMap<String, String> querySolver(String query) throws SQLException {
         getResultSet = establishConnection(query).executeQuery();
         Service service = new Service();
-        return service.mapAdder(columnFirst, columnSecond);
+        return service.mapAdder();
     }
 
-    public LinkedHashMap<String, String> querySolver(String query, String columnFirst, String columnSecond, String year) throws SQLException {
+    public LinkedHashMap<String, String> querySolver(String query, String year) throws SQLException {
         preparedStatement = establishConnection(query);
         preparedStatement.setString(1, year);
         getResultSet = preparedStatement.executeQuery();
         Service service = new Service();
-        return service.mapAdder(columnFirst, columnSecond);
+        return service.mapAdder();
     }
 }
