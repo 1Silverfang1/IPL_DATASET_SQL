@@ -40,12 +40,12 @@ public class DatasetSQL {
 
         return solvedQuery;
     }
-    private LinkedHashMap<String,String> QuerySolver(String query,String columnFirst, String columnSecond) throws SQLException {
+    private LinkedHashMap<String,String> querySolver(String query, String columnFirst, String columnSecond) throws SQLException {
         getResultSet= establishConnection(query).executeQuery();
       DatasetSQL datasetSQL= new DatasetSQL();
         return datasetSQL.mapAdder(columnFirst,columnSecond);
     }
-    private LinkedHashMap<String,String> QuerySolver(String query,String columnFirst, String columnSecond,String year) throws SQLException {
+    private LinkedHashMap<String,String> querySolver(String query, String columnFirst, String columnSecond, String year) throws SQLException {
         preparedStatement= establishConnection(query);
         preparedStatement.setString(1,year);
         getResultSet= preparedStatement.executeQuery();
@@ -58,16 +58,15 @@ public class DatasetSQL {
         try {
 
             DatasetSQL datasetObject= new DatasetSQL();
-
-            datasetObject.QuerySolver(QUERY[iterator++],COLUMN_FIRST[iteratorColumn1++],COLUMN_SECOND[iteratorColumn2++]).forEach((k, v)->System.out.printf("\n %-30s %.5s",k,v));
+            datasetObject.querySolver(QUERY[iterator++],COLUMN_FIRST[iteratorColumn1++],COLUMN_SECOND[iteratorColumn2++]).forEach((k, v)->System.out.printf("\n %-30s %.5s",k,v));
             System.out.println("\n\n");
-            datasetObject.QuerySolver(QUERY[iterator++],COLUMN_FIRST[iteratorColumn1++],COLUMN_SECOND[iteratorColumn2++]).forEach((k, v)->System.out.printf("\n %-30s %.5s",k,v));
+            datasetObject.querySolver(QUERY[iterator++],COLUMN_FIRST[iteratorColumn1++],COLUMN_SECOND[iteratorColumn2++]).forEach((k, v)->System.out.printf("\n %-30s %.5s",k,v));
             System.out.println("\n\n");
-            datasetObject.QuerySolver(QUERY[iterator++],COLUMN_FIRST[iteratorColumn1++],COLUMN_SECOND[iteratorColumn2++],year[0]).forEach((k, v)->System.out.printf("\n %-30s %.5s",k,v));
+            datasetObject.querySolver(QUERY[iterator++],COLUMN_FIRST[iteratorColumn1++],COLUMN_SECOND[iteratorColumn2++],year[0]).forEach((k, v)->System.out.printf("\n %-30s %.5s",k,v));
             System.out.println("\n\n");
-            datasetObject.QuerySolver(QUERY[iterator++],COLUMN_FIRST[iteratorColumn1++],COLUMN_SECOND[iteratorColumn2++],year[1]).forEach((k, v)->System.out.printf("\n %-30s %.5s",k,v));
+            datasetObject.querySolver(QUERY[iterator++],COLUMN_FIRST[iteratorColumn1++],COLUMN_SECOND[iteratorColumn2++],year[1]).forEach((k, v)->System.out.printf("\n %-30s %.5s",k,v));
             System.out.println("\n\n");
-            datasetObject.QuerySolver(QUERY[iterator++],COLUMN_FIRST[iteratorColumn1++],COLUMN_SECOND[iteratorColumn2++],year[2]).forEach((k, v)->System.out.printf("\n %-30s %.5s",k,v));
+            datasetObject.querySolver(QUERY[iterator++],COLUMN_FIRST[iteratorColumn1++],COLUMN_SECOND[iteratorColumn2++],year[2]).forEach((k, v)->System.out.printf("\n %-30s %.5s",k,v));
             System.out.println("\n\n");
 
 
