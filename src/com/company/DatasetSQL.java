@@ -12,6 +12,7 @@ public class DatasetSQL {
 
     private PreparedStatement establishConnection(String query) throws SQLException
     {
+
         getConnection = DriverManager.getConnection(jdbcUrlforDatabase, username, password);
         return getConnection.prepareStatement(query);
     }
@@ -57,21 +58,16 @@ public class DatasetSQL {
 
         try {
 
-            DatasetSQL datasetObject= new DatasetSQL();
-            datasetObject.querySolver(QUERY[iterator++],COLUMN_FIRST[iteratorColumn1++],COLUMN_SECOND[iteratorColumn2++]).forEach((k, v)->System.out.printf("\n %-30s %.5s",k,v));
-            System.out.println("\n\n");
-            datasetObject.querySolver(QUERY[iterator++],COLUMN_FIRST[iteratorColumn1++],COLUMN_SECOND[iteratorColumn2++]).forEach((k, v)->System.out.printf("\n %-30s %.5s",k,v));
-            System.out.println("\n\n");
-            datasetObject.querySolver(QUERY[iterator++],COLUMN_FIRST[iteratorColumn1++],COLUMN_SECOND[iteratorColumn2++],year[0]).forEach((k, v)->System.out.printf("\n %-30s %.5s",k,v));
-            System.out.println("\n\n");
-            datasetObject.querySolver(QUERY[iterator++],COLUMN_FIRST[iteratorColumn1++],COLUMN_SECOND[iteratorColumn2++],year[1]).forEach((k, v)->System.out.printf("\n %-30s %.5s",k,v));
-            System.out.println("\n\n");
-            datasetObject.querySolver(QUERY[iterator++],COLUMN_FIRST[iteratorColumn1++],COLUMN_SECOND[iteratorColumn2++],year[2]).forEach((k, v)->System.out.printf("\n %-30s %.5s",k,v));
-            System.out.println("\n\n");
-
-
-
-        } catch (SQLException e) {
+            DatasetSQL datasetObject = new DatasetSQL();
+            while (iterator < First_Limit) {
+                datasetObject.querySolver(QUERY[iterator++], COLUMN_FIRST[iteratorColumn1++], COLUMN_SECOND[iteratorColumn2++]).forEach((k, v) -> System.out.printf("\n %-30s %.5s", k, v));
+                System.out.println("\n\n");
+            }
+            while (iterator < SECOND_LIMIT)
+            {
+                datasetObject.querySolver(QUERY[iterator++], COLUMN_FIRST[iteratorColumn1++], COLUMN_SECOND[iteratorColumn2++], year[0]).forEach((k, v) -> System.out.printf("\n %-30s %.5s", k, v));
+            }
+        }catch (SQLException e) {
             e.printStackTrace();
         }
 

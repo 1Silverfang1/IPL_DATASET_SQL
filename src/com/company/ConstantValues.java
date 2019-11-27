@@ -3,7 +3,7 @@ package com.company;
 import java.sql.*;
 
 class ConstantValues {
-    static int iteratorColumn1 = 0, iteratorColumn2 = 0,iterator=0;
+    static int iteratorColumn1 = 0, iteratorColumn2 = 0,iterator=0,First_Limit=2,SECOND_LIMIT=5;
     static String jdbcUrlforDatabase = "jdbc:postgresql://localhost:5434/Database_test";
     static String username = "postgres";
     static String password = "toor";
