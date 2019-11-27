@@ -7,8 +7,8 @@ import java.util.LinkedHashMap;
 
 import static com.company.ConstantValues.*;
 import static com.company.ConstantValues.getResultSet;
-
 public class DatasetSQL {
+
 
     private PreparedStatement establishConnection(String query) throws SQLException
     {
@@ -16,13 +16,6 @@ public class DatasetSQL {
         return getConnection.prepareStatement(query);
     }
 
-    private PreparedStatement establishConnection(String query,String year) throws SQLException
-    {
-        getConnection = DriverManager.getConnection(jdbcUrlforDatabase, username, password);
-        PreparedStatement preparedStatement= getConnection.prepareStatement(query);
-        preparedStatement.setString(1,year);
-        return  preparedStatement;
-    }
     private LinkedHashMap<String,String> mapAdder(String columnFirst, String columnSecond) throws SQLException {
         LinkedHashMap<String,String> solvedQuery= new LinkedHashMap<>();
         while (getResultSet.next())
@@ -53,7 +46,9 @@ public class DatasetSQL {
         return datasetSQL.mapAdder(columnFirst,columnSecond);
     }
     private LinkedHashMap<String,String> QuerySolver(String query,String columnFirst, String columnSecond,String year) throws SQLException {
-        getResultSet= establishConnection(query,year).executeQuery();
+        preparedStatement= establishConnection(query);
+        preparedStatement.setString(1,year);
+        getResultSet= preparedStatement.executeQuery();
         DatasetSQL datasetSQL= new DatasetSQL();
         return datasetSQL.mapAdder(columnFirst,columnSecond);
     }
