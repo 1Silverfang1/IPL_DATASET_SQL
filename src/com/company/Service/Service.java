@@ -1,5 +1,5 @@
 package com.company.Service;
-
+import static com.company.ConstantAndDatabaseConfig.ConstantValues.*;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -20,21 +20,17 @@ public class Service {
     private LinkedHashMap<String, String> mapAdder() {
         LinkedHashMap<String, String> solvedQuery = new LinkedHashMap<>();
         while (true) {
-            String firstColumn = null;
-            String secondColumn = null;
             try {
                 if (!getResultSet.next()) break;
                 firstColumn = getResultSet.getString(1);
                 secondColumn = getResultSet.getString(2);
-            } catch (SQLException e) {
+            } catch (SQLException e)
+            {
                 e.printStackTrace();
             }
             solvedQuery.put(firstColumn, secondColumn);
         }
         try {
-            if (getStatement != null) {
-                getStatement.close();
-            }
             if (getResultSet != null) {
                 getResultSet.close();
             }

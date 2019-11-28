@@ -2,7 +2,7 @@ package com.company.ConstantAndDatabaseConfig;
 
 public class ConstantValues {
 
-    public static String YEAR = "2016", PRE_YEAR = "2015";
+    public static String YEAR = "2016", PRE_YEAR = "2015",firstColumn = null, secondColumn = null;
     private static String over = "6", limit = "10";
     public static String QUERY_SEASON_MATCH = "select season, count(id) as match_played from matches group by season order by season;";
     public static String QUERY_WINNER_COUNT = "select winner, count(winner) as total_wins from matches  where winner is not null group by winner order by winner;";
