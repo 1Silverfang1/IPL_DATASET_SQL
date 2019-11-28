@@ -17,11 +17,18 @@ public class Service {
         return getConnection.prepareStatement(query);
     }
 
-    private LinkedHashMap<String, String> mapAdder() throws SQLException {
+    private LinkedHashMap<String, String> mapAdder() {
         LinkedHashMap<String, String> solvedQuery = new LinkedHashMap<>();
-        while (getResultSet.next()) {
-            String firstColumn = getResultSet.getString(1);
-            String secondColumn = getResultSet.getString(2);
+        while (true) {
+            String firstColumn = null;
+            String secondColumn = null;
+            try {
+                if (!getResultSet.next()) break;
+                firstColumn = getResultSet.getString(1);
+                secondColumn = getResultSet.getString(2);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             solvedQuery.put(firstColumn, secondColumn);
         }
         try {
